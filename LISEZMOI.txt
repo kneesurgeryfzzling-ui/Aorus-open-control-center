@@ -1,0 +1,119 @@
+AORUS Open Control Center v13.3 — Aorus 15G YC
+=============================================
+
+AVERTISSEMENT
+Projet personnel et non officiel, sans lien avec GIGABYTE / AORUS. Il réutilise des éléments de l'AORUS Control
+Center d'origine (commandes du firmware et protocole du clavier repris de ses DLL). AORUS et GIGABYTE sont des
+marques de GIGABYTE Technology. Réalisé avec un coup de main de Claude (Anthropic). Utilisation à tes risques.
+
+Lancer sans compiler : double-clic sur lancer.bat (Python 3.9+ requis). Il demande les droits admin.
+Créer l'exe        : double-clic sur build_exe.bat -> dist\AORUS-Open-CC.exe
+
+NOUVEAU DANS LA v13.3
+ - Boutons en verre liquide (pilule translucide, reflet, bord lumineux, fond légèrement déformé).
+ - Nouveau fond « Lignes lumineuses » (Système -> Météo de l'interface) : des lignes de lumière ondulent,
+   accélèrent avec la charge du CPU, passent du bleu à l'orange quand ça chauffe, et la souris les attire.
+   Version maison inspirée des composants « Shader Lines » et « Liquid Glass Button » de designali-in (21st.dev).
+
+NOUVEAU DANS LA v13.2
+ - L'intro a retrouvé son son (réglable : Système -> « Son de l'intro »).
+ - Ciel d'orage plus bleu, verre légèrement bleuté assorti, léger effet de profondeur : le ciel bouge
+   avec la souris.
+ - Accueil : une phrase d'état en direct sous le titre (« Tout est calme », « Ça chauffe : 89 °C »,
+   garde thermique, test en cours, batterie faible).
+ - Graphique aux lignes lumineuses, barre de défilement en verre.
+
+CORRECTIFS v13.1
+ - Le texte « tr/min » ne tourne plus avec l'hélice.
+ - Les tr/min et la température CPU sont maintenant lus directement dans le firmware Gigabyte quand
+   LibreHardwareMonitor n'est pas lancé (si ton modèle expose ces valeurs ; sinon le rapport dira lesquelles existent).
+ - Plus de lueur orange en bas du fond.
+ - Intro vidéo Aramas Studio à l'ouverture. Clic, Échap ou « Passer » pour la sauter,
+   désactivable dans Système.
+ - Page Système : « À propos et avertissement ».
+
+NOUVEAU DANS LA v13
+-------------------
+Arrière-plan
+ - Fermer la fenêtre ne ferme plus l'appli : elle reste près de l'horloge (icône AORUS).
+   Clic gauche = rouvrir. Clic droit = menu : preset, mode ventilateurs, clavier on/off, garde thermique, Quitter.
+ - Ma courbe, la garde thermique, les profils auto et les effets clavier continuent de tourner.
+ - Notifications Windows : garde thermique déclenchée, batterie faible, profil auto appliqué, test terminé.
+ - Relancer l'appli alors qu'elle tourne déjà rouvre simplement sa fenêtre (une seule instance).
+ - « Lancer avec Windows » démarre maintenant directement en arrière-plan, sans fenêtre.
+ - Fenêtre fermée = mode économie (moins de mesures, aucun dessin).
+ - Pour vraiment quitter : bouton « Quitter l'application » ou clic droit sur l'icône -> Quitter.
+   Option dans Système -> Arrière-plan pour revenir à l'ancien comportement.
+
+Fond et animations
+ - Le fond est maintenant dessiné par la carte graphique (WebGL) : nuages volumétriques, pluie dense
+   sur 3 profondeurs, buée sur la vitre, vraies gouttes qui glissent, laissent une traînée et déforment
+   le ciel derrière elles comme de l'eau. La souris essuie la vitre, la pluie la remouille petit à petit.
+ - Résolution adaptative : si ça rame, le fond baisse sa définition tout seul au lieu de saccader.
+ - Une seule boucle d'animation : graphique de l'accueil qui défile en continu, ventilateurs qui accélèrent
+   et ralentissent avec inertie, aperçu du clavier 4× plus fréquent, flou du verre allégé.
+
+Nouvelles fonctions
+ - Test de refroidissement (page Ventilateurs) : charge tous les cœurs 30 s, 1 min ou 3 min, puis mesure
+   la redescente. Courbe, pic, fréquence, vitesse des ventilos et verdict.
+ - Températures max de la session sur l'accueil.
+ - Effet clavier « Pluie » : gouttes qui tombent rangée par rangée et éclaboussent la barre d'espace.
+ - Synchro dans les deux sens : un éclair dans l'interface fait aussi briller le clavier (effets Orage et Pluie),
+   et un éclair du clavier illumine l'interface.
+
+NOUVEAU DANS LA v12 : météo d'orage interactive
+-----------------------------------------------
+ - Derrière le verre : ciel d'orage, nuages qui dérivent, pluie, éclairs, brume.
+ - « Suit mon PC » (par défaut) : la pluie suit la charge CPU, le vent suit les ventilateurs, l'orage gronde
+   quand la température monte. Garde thermique active = tempête.
+ - La pluie rebondit sur le haut des cartes ; ta souris sert de parapluie.
+ - La foudre frappe les cartes : la carte températures quand ça chauffe, le preset que tu choisis,
+   la notification en cas d'erreur. La carte s'illumine et tremble.
+ - Gouttes sur la vitre qui glissent et fusionnent ; passe la souris pour les essuyer, clique pour une onde.
+ - Avec l'effet clavier « Orage », chaque éclair du clavier illumine aussi l'interface.
+ - Son de pluie et de tonnerre (désactivé par défaut).
+ - Réglages : page Système -> « Météo de l'interface », ou clic sur « Ciel » en haut.
+   Modes : Suit mon PC, Orage, Pluie forte, Pluie, Couvert, Désactivée (retour au fond coloré).
+ - Si ça rame, l'appli réduit d'elle-même le nombre de gouttes.
+
+NOUVEAU DANS LA v11 : interface « verre liquide »
+----------------------------------------------
+ - Panneaux en verre dépoli avec reflets, fond d'écran vivant qui suit la couleur du clavier.
+ - Animations à ressort : capsule de menu qui glisse en s'étirant, pastilles des boutons qui coulissent,
+   cartes qui arrivent en cascade, boutons qui s'enfoncent et rebondissent, chiffres qui défilent,
+   notifications en « île » en haut de l'écran.
+ - Si Windows a « Effets d'animation » désactivé, les animations sont coupées automatiquement.
+
+NOUVEAU DANS LA v10
+-------------------
+Interface entièrement refaite
+ - Accueil : graphique en direct des températures CPU/GPU et de la vitesse des ventilos (2, 5 ou 10 min),
+   compteurs CPU, GPU, RAM, batterie, réseau, disque, applis les plus gourmandes (avec bouton Fermer),
+   aperçu du clavier en direct.
+ - Ctrl+K : palette d'actions (tape « turbo », « ripple », « batterie »… puis Entrée).
+ - Ctrl+1 à Ctrl+7 : changer de page.
+
+Ventilateurs
+ - « Ma courbe » : dessine ta courbe température -> vitesse (glisser les points, double-clic pour ajouter,
+   clic droit pour retirer). L'appli suit la température max CPU/GPU toutes les 2 s : elle monte tout de suite
+   et redescend après ~8 s pour éviter le yoyo. Il faut un capteur de température (LibreHardwareMonitor ou
+   GPU NVIDIA). À la fermeture de l'appli, les ventilos repassent en Normal (le firmware reprend la main).
+ - Garde thermique : si la température atteint le seuil (93 °C par défaut), ventilos à 100 % jusqu'à ce que
+   ça redescende de 8 °C, puis retour au mode choisi.
+
+Clavier (Fusion USB)
+ - Onglet Peinture : peins chaque touche à la souris, pipette, gomme, modèles (ZQSD/WASD, arc-en-ciel),
+   et « Figer l'effet en cours » pour transformer une image d'animation en peinture.
+ - Nouveaux effets : Carte de chaleur (les touches chauffent quand tu tapes), Snake (joue seul, la touche
+   que tu presses devient la pomme), Ciel étoilé, Tableau de bord (F1-F12 = température, chiffres = CPU,
+   ligne AZERTY = RAM, pavé numérique = GPU).
+
+Système
+ - Exporter / importer tous tes réglages dans un fichier .json.
+
+IMPORTANT : codé à partir de tes DLL Gigabyte, mais NON testé sur un vrai 15G YC.
+Si un truc ne marche pas : page Système -> « Créer un rapport » -> envoie-moi rapport_aorus.txt.
+Les effets clavier « Matériel N » sont expérimentaux.
+
+TEINTES : les LED de ce clavier ont un rouge bien plus puissant que le vert/bleu. L'appli corrige la balance
+(« Réglage Gigabyte » dans Clavier -> Réglages avancés). Ajuste avec la mire si besoin.
